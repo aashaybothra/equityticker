@@ -1,0 +1,27 @@
+.h-screen{
+    height: 70vh;
+}
+.demo-table {
+    background-color: black;
+    width: 100%;
+  }
+  .mat-mdc-row .mat-mdc-cell {
+    background-color: #3D3D3D;
+    cursor: pointer;
+  }
+  .mat-mdc-row{
+    border-radius: 5%;
+  }
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+  .mat-mdc-table .mat-mdc-header-cell {
+    background: #3D3D3D;
+}
+.mat-mdc-cell {
+    border-bottom-color: none;
+    border-bottom-width: none;
+    border-bottom-style: none;
+    letter-spacing: var(--mat-table-row-item-label-text-tracking);
+    line-height: inherit;
+}

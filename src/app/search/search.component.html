@@ -1,0 +1,43 @@
+<div class="flex justify-center items-center h-screen relative">
+    <div *ngIf="!showPopup" class="text-white xl:text-6xl text-4xl flex justify-center items-center h-screen flex-col px-2">
+        <div class="text-center font-semibold xl:w-3/5">Only <code class="font-extralight italic">12%</code> of Investors know their stocks*</div>
+        <div class="justify-center mt-4">
+            <input type="text" [(ngModel)]="searchTerm"
+                   class="rounded-lg justify-center text-white bg-white/20 p-2 w-80 text-lg border-0 focus:border-transparent focus:outline-none" 
+                   placeholder="Search your stock"
+                   (keydown.enter)="getTickerInfo()">
+        </div>
+        <div class="text-center text-sm mt-3 font-semibold">
+            *Get a headstart to your Financial Awakening
+        </div>
+    </div>
+    <div *ngIf="showPopup" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50 p-5">
+        <div class="bg-white/5 p-5 rounded-lg xl:w-8/12 w-96 max-h-screen overflow-y-auto">
+            <h2 class="text-3xl text-white font-bold mb-4 text-center">Stocks</h2>
+            <div *ngIf="searchResults && searchResults.length > 0">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full rounded-lg">
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="symbol" class=" bg-black">
+                        <th mat-header-cell *matHeaderCellDef class="text-white font-bold text-xl bg-black">Symbol</th>
+                        <td mat-cell *matCellDef="let element" class="text-white">{{ element['1. symbol'] }}</td>
+                    </ng-container>
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef class="text-white font-bold text-xl">Name</th>
+                        <td mat-cell *matCellDef="let element" class="text-white">{{ element['2. name'] }}</td>
+                    </ng-container>
+                    <!-- Currency Column -->
+                    <ng-container matColumnDef="currency">
+                        <th mat-header-cell *matHeaderCellDef class="text-white text-xl font-bold">Region</th>
+                        <td mat-cell *matCellDef="let element" class="text-white">{{ element['4. region'] }}</td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; index as rowIndex; columns: displayedColumns;" (click)="onRowClicked(row, rowIndex)" class="cursor-pointer"></tr>
+                </table>
+            </div>
+            <div class="text-center mt-4">
+                <button mat-button color="warn" (click)="closePopup()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

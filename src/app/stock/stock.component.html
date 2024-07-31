@@ -1,0 +1,86 @@
+<div class="min-h-screen max-w-screen">
+    <div>
+        <app-navbar></app-navbar>
+    </div>
+    <div class="grid lg:grid-cols-4 lg:gap-2 md:grid-cols-1 text-white w-full text-center p-4 min-h-fit">
+        <div class="lg:col-span-1 md:col-span-1">
+            <!-- First Column First Row -->
+            <div class="bg-white/5 rounded-lg w-full h-fit max-h-1/2">
+                <div class="flex flex-col items-center">
+                    <div class="font-black text-4xl mt-2 p-2">
+                        {{ this.name }} Tata Chemicals
+                    </div>
+                    <div class="italic text-white/30">
+                        {{ this.symbol}}
+                    </div>
+                </div>
+                <div class="text-left p-5">
+                    <div class="justify-between flex">
+                        <div>Type</div>
+                        <div>{{ this.type }}</div>
+                    </div>
+                    <div class="justify-between flex mt-2">
+                        <div>Price</div>
+                        <div [ngClass]="{'text-green-500': symbolQuote?.['09. change'] >= 0, 'text-red-500': symbolQuote?.['09. change'] < 0}">{{ getCurrencySymbol() }}{{ symbolQuote?.['05. price'] }}</div>
+                    </div>
+                    <div class="justify-between flex mt-2">
+                        <div>Gain/Loss</div>
+                        <div [ngClass]="{'text-green-500': symbolQuote?.['09. change'] >= 0, 'text-red-500': symbolQuote?.['09. change'] < 0}">
+                            {{ symbolQuote?.['09. change'] }} ({{ symbolQuote?.['10. change percent'] }})
+                        </div>
+                    </div>
+                    <div class="justify-between flex mt-2">
+                        <div>Currency</div>
+                        <div>{{ this.currency}}</div>
+                    </div>
+                    <div class="justify-between flex mt-2">
+                        <div>Region</div>
+                        <div>{{ this.region }}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- First Column Second Row -->
+            <div class="bg-white/5 rounded-lg w-full max-h-1/2 mt-2 text-left p-5">
+                <div class="text-xl font-bold">About</div>
+                <div class="text-white/30">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, ullam. Quia rerum earum perferendis laborum accusamus voluptates, fugit fuga tempora voluptate, quam nam soluta atque quisquam, in rem est similique.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sequi mollitia voluptatem beatae hic magni, excepturi voluptate rem repellat, rerum, totam ex corporis accusamus repudiandae reiciendis ducimus ipsam tenetur cum?
+                </div>
+            </div>
+        </div>
+        <!-- Second Column -->
+        <div class="lg:col-span-2 md:col-span-2 h-full flex flex-col items-center">
+            <div class="bg-white/5 rounded-lg h-4/5 w-full">
+                <div class="text-lg text-center mt-4">
+                    <app-charts></app-charts>
+                </div>
+            </div>
+            <div class="bg-white/5 rounded-lg h-1/5 w-full mt-2 flex flex-row px-4 py-3">
+                <div class="w-1/2 text-lg text-left">
+                    <div class="font-bold text-white/75">Open: {{ getCurrencySymbol() }}{{ symbolQuote?.['02. open'] }}</div>
+                    <div class="mt-1">
+                        <div class="font-bold text-white/75">High: {{ getCurrencySymbol() }}{{ symbolQuote?.['03. high'] }}</div>
+                    </div>
+                    <div class="mt-1">
+                        <div class="font-bold text-white/75">Low: {{ getCurrencySymbol() }}{{ symbolQuote?.['04. low'] }}</div>
+                    </div>
+                </div>
+                <div class="w-1/2 text-lg text-left">
+                    <div class="font-bold text-white/75">Previous Close: {{ getCurrencySymbol() }}{{ symbolQuote?.['08. previous close'] }}</div>
+                    <div [ngClass]="{'text-green-500': symbolQuote?.['09. change'] >= 0, 'text-red-500': symbolQuote?.['09. change'] < 0}" class="mt-1 flex">
+                        <span class="text-white/75 font-bold">Price:</span>
+                        <div class="font-bold mx-1">{{ getCurrencySymbol() }}{{ symbolQuote?.['05. price'] }}</div>
+                    </div>
+                    <div class="mt-1">
+                        <div class="font-bold text-white/75">Volume: {{ symbolQuote?.['06. volume'] }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Third Column -->
+        <div class="lg:col-span-1 md:col-span-1 bg-white/5 rounded-lg h-full">
+            
+        </div>
+    </div>
+</div>
