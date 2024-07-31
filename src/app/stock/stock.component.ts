@@ -30,17 +30,17 @@ export class StockComponent implements OnInit {
   ngOnInit(): void {
     // Capture state values from navigation
     // Capture query params
-    // this.route.queryParams.subscribe(params => {
-    //   this.symbol = params['symbol'];
-    //   this.name = params['name'];
-    //   this.type = params['type'];
-    //   this.region = params['region'];
-    //   this.currency = params['currency'];
-    //   console.log('Symbol from query params:', this.symbol);
-    //   if (this.symbol) {
-    //     this.getPrice(this.symbol);
-    //   }
-    // });
+    this.route.queryParams.subscribe(params => {
+      this.symbol = params['symbol'];
+      this.name = params['name'];
+      this.type = params['type'];
+      this.region = params['region'];
+      this.currency = params['currency'];
+      console.log('Symbol from query params:', this.symbol);
+      if (this.symbol) {
+        this.getPrice(this.symbol);
+      }
+    });
   }
 
   getCurrencySymbol(): string {
